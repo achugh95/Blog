@@ -1,0 +1,126 @@
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>
+            Blogging
+        </title>
+        {% load staticfiles %}          <!-- To load the files present in the blog_app/static folder -->
+
+        <style>
+
+            .body{
+                width:100%;
+                height:100%;
+            }
+
+            .container-fluid{
+                width:100%;
+                height:100%;
+            }
+            #welcome_text{
+                background-color:#447e9b;
+                color:#f5dd5d;
+                font-size:150%;
+                padding-top:2%;
+                padding-bottom:2%;
+            }
+
+            #horizontal_bar{
+                background-color:#79aec8;
+                color:#f5dd5d;
+                height:5%;
+
+            }
+
+            .sidebar{
+                width:30%;
+
+                float:left;
+                display:inline-block;
+                padding:1%;
+            }
+
+            .main_page{
+                width:70%;
+                height:80%;
+                float:right;
+                display:inline-block;
+                overflow:scroll;
+            }
+
+        </style>
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css"/>
+<!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+
+    </head>
+
+    <body class="dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-md-2">
+
+                    <center>
+                        <img src="{% static 'images/tivix_logo.png' %}" class="responsive-image" style='max-height: 70px;' alt="Tivix">
+                    </center>
+
+                </div>
+
+                <div class="col-md-10" id="welcome_text">
+
+                    <center>
+
+                        <b> Welcome to the world of Blogging! </b>
+
+                    </center>
+
+                </div>
+
+            </div>
+
+            <div class="row" id="horizontal_bar">
+
+            </div>
+
+            <div class="row">
+
+                <div class="sidebar">
+
+                    {% block sidebar %}
+
+                        <h3>
+                            <a href="/home/"> Home </a>
+                            <br> <br> <br>
+                            <a href="/home/CreatePost/">Create Post</a>
+                            <br> <br> <br>
+                            <a href="/contact/">Contact Us</a>
+                            <br> <br> <br>
+                            <a href="/admin/logout">Logout</a>
+                            <br> <br> <br>
+
+                        </h3>
+
+                    {% endblock sidebar %}
+
+                </div>
+
+                <div class="main_page">
+
+                    {% block main_page %}
+                    {% endblock main_page %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

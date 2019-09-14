@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main_page %}
+
+    {% for post in post_list %}
+
+        <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6"> {{ post.created_date}} </p>
+                    <p class="card-text">{{post.description | slice:":200" }}</p>
+                    <a href='/home/blog/{{ post.id }}' class="btn btn-primary">Read More &rarr;</a>
+                </div>
+            </div>
+
+    {% endfor %}
+
+
+{% endblock main_page %}

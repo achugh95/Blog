@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main_page %}
+
+    {% with url_name=request.resolver_match.url_name %}
+
+            {% if url_name == 'create_post' %}
+                <h3>Congratulations!</h3>
+                <h3> You have successfully added a new Post.</h3>
+            {% elif url_name == 'edit_post' %}
+                <h3>You have successfully edited the Post.</h3>
+            {% endif  %}
+
+    {% endwith %}
+
+{% endblock main_page%}

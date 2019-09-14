@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block main_page %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% with url_name=request.resolver_match.url_name %}
+
+            {% if url_name == 'create_post' %}
+                <h3>  Adding a New Post : </h3>
+            {% elif url_name == 'edit_post' %}
+                <h3> Edit Post :</h3>
+            {% endif  %}
+
+            <table>
+                {% for field in form %}
+                     <tr>
+                         <td>
+                             {% if field.label != "Created Date" %}
+                                {{ field.label_tag }}
+                             {% endif %}
+                         </td>
+
+                         <td>
+                             {{ field }}
+                         </td>
+
+                      <br>
+                     </tr>
+                      <tr>
+                          <td>
+                              <br>
+                          </td>
+                      </tr>
+
+                 {% endfor %}
+            </table>
+
+        <br><br>
+
+            {% if url_name == 'create_post' %}
+                <button type="Submit" class="btn btn-success">Submit</button>
+            {% elif url_name == 'edit_post' %}
+                <button type="Submit" class="btn btn-warning">Edit</button>
+            {% endif %}
+
+        {% endwith %}
+    </form>
+
+{% endblock main_page%}
