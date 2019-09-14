@@ -47,11 +47,7 @@ def edit_post(request, pk):
 
     if request.method == "POST":
         print("Post")
-        print("Before:", post.created_date)
-        post.created_date = timezone.now()
         form = PostForm(request.POST, instance=post)
-        print("After:", post.created_date)
-        print(form)
 
         if form.is_valid():
             print("Valid")
